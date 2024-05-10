@@ -33,7 +33,7 @@ function App() {
       <Router>
         <Routes>
           {/* Pass uploadedFiles state as prop to MyFiles */}
-          <Route path="/dashboard" element={<MyFiles files={uploadedFiles} />} />
+          <Route path="/" element={<MyFiles files={uploadedFiles} />} />
           <Route path="/files" element={<ListFiles />} />
           <Route path="/folders" element={<ListFolders />} />
           <Route path="/recent-files" element={<RecentFiles />} />
