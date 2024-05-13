@@ -16,6 +16,7 @@ import {
   FolderZip,
 } from "@mui/icons-material";
 import { motion } from "framer-motion";
+import StorageUpdate from "./storage";
 
 const Sidebar = () => {
   const [isDocumentsOpen, setIsDocumentsOpen] = useState(false);
@@ -170,7 +171,9 @@ const Sidebar = () => {
           </li>
           {/* Add more sidebar items as needed */}
         </ul>
-        <div className="bg-gray-200 h-[45%] my-5 rounded-md"></div>
+        <div className="bg-gray-200 h-[45%] my-5 rounded-md overflow-y-auto">
+          <StorageUpdate />
+        </div>
       </motion.div>
     </>
   );
