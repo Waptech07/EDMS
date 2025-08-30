@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Search, Bell, Settings, User, Menu } from 'lucide-react';
-import { useView } from '../../context/ViewContext';
-import { useFiles } from '../../context/FileContext';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Search, Bell, Settings, User, Menu } from "lucide-react";
+import { useView } from "../../context/ViewContext";
+import { useFiles } from "../../context/FileContext";
 
 const Navbar = () => {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -25,18 +25,17 @@ const Navbar = () => {
           >
             <Menu size={20} />
           </button>
-          
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">E</span>
-            </div>
-            <h1 className="text-xl font-bold text-gray-900">EDMS Pro</h1>
+            <h1 className="text-xl font-bold text-gray-900">EDMS</h1>
           </div>
         </div>
 
         <div className="flex-1 max-w-2xl mx-8">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            <Search
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              size={20}
+            />
             <input
               type="text"
               placeholder="Search files and folders..."
@@ -56,7 +55,7 @@ const Navbar = () => {
               <Bell size={20} />
               <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
             </button>
-            
+
             {showNotifications && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -91,7 +90,7 @@ const Navbar = () => {
                 <User size={16} className="text-white" />
               </div>
             </button>
-            
+
             {showProfile && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -108,9 +107,15 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <button className="w-full text-left p-2 hover:bg-gray-100 rounded-lg">Profile Settings</button>
-                  <button className="w-full text-left p-2 hover:bg-gray-100 rounded-lg">Storage Plans</button>
-                  <button className="w-full text-left p-2 hover:bg-gray-100 rounded-lg text-red-600">Sign Out</button>
+                  <button className="w-full text-left p-2 hover:bg-gray-100 rounded-lg">
+                    Profile Settings
+                  </button>
+                  <button className="w-full text-left p-2 hover:bg-gray-100 rounded-lg">
+                    Storage Plans
+                  </button>
+                  <button className="w-full text-left p-2 hover:bg-gray-100 rounded-lg text-red-600">
+                    Sign Out
+                  </button>
                 </div>
               </motion.div>
             )}
