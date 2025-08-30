@@ -1,10 +1,21 @@
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import React from "react";
 import FileCard from "../../components/cards/FileCard";
-import FolderCard from "../../components/cards/FolderCard";
 import SearchBar from "../../components/search/SearchBar";
+import FileViewerDialog from "../../components/cards/FileViewer";
+import { files } from "../../assets/dummy"; // Ensure the correct import path
 
 const ListFiles = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileClick = (file) => {
+    setSelectedFile(file);
+  };
+
+  const handleClose = () => {
+    setSelectedFile(null);
+  };
+
   return (
     <>
       <section>
@@ -15,24 +26,27 @@ const ListFiles = () => {
           className="bg-white p-5 rounded-lg shadow-lg lg:my-28 mb-10 mx-5 lg:w-[70%] lg:fixed right-0 top-0 lg:h-[80%] overflow-y-auto"
         >
           <div className="flex justify-between my-2">
-            <SearchBar size={"medium"} searchClass={"w-full"} placeholder={"Search files..."} />
+            <SearchBar
+              size={"medium"}
+              searchClass={"w-full"}
+              placeholder={"Search files..."}
+            />
           </div>
           <h2 className="text-2xl font-semibold mb-4">Files</h2>
-          {/* <div>
-          {files.map((file, index) => (
-            <FileCard file={file}/>
-          ))}
-        </div> */}
           <div className="grid lg:grid-cols-3 md:grid-cols-2">
-            <FileCard/>
-            <FileCard/>
-            <FileCard/>
-            <FileCard/>
-            <FileCard/>
-            <FileCard/>
+            {files.map((file) => (
+              <FileCard key={file.id} file={file} onClick={handleFileClick} />
+            ))}
           </div>
         </motion.div>
       </section>
+      {selectedFile && (
+        <FileViewerDialog
+          file={selectedFile}
+          open={!!selectedFile}
+          onClose={handleClose}
+        />
+      )}
     </>
   );
 };
